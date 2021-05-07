@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <br /><br />
+  <div class="row">
+    <div class="col-md-6">
+      <br /><br />
+      <h3>Yearwise Candidate Onboarding</h3>
+      <br /><br />
+      <div class="chart-wrapper">
+        <canvas baseChart
+        [datasets]="barChartData" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins" 
+        [legend]="barChartLegend" 
+        [chartType]="barChartType">
+
+        </canvas>
+      </div>
+    </div>
+    <br /><br />
+
+    <div class="col-md-6">
+      <br /><br />
+      <h3>Locations of Selected Candidates</h3>
+      <br /><br />
+      <div class="chart-wrapper" *ngIf="slChartData">
+        <canvas baseChart 
+        [datasets]="slChartData" 
+        [labels]="slChartLabels" 
+        [chartType]="slChartType"
+        [options]="slChartOptions" 
+        [legend]="slChartLegend">
+        </canvas>
+      </div>
+    </div>
+  <br>
+  <br /><br />
+
+<div class="col-md-6">
+  <br /><br />
+  <h3>Technology of Selected Candidates</h3>
+  <br /><br />
+  <div class="chart-wrapper" *ngIf="slChartData">
+    <canvas baseChart 
+    [datasets]="techChartData" 
+    [labels]="techChartLabels" 
+    [chartType]="techChartType"
+    [options]="techChartOptions" 
+    [legend]="techChartLegend">
+    </canvas>
+  </div>
+</div>
+<br>
+<br /><br />
+
+<div class="col-md-6">
+  <br /><br />
+  <h3>Course Enrolled of Selected Candidates</h3>
+  <br /><br />
+  <div class="chart-wrapper" *ngIf="slChartData">
+    <canvas baseChart 
+    [datasets]="courseChartData" 
+    [labels]="courseChartLabels" 
+    [chartType]="courseChartType"
+    [options]="courseChartOptions" 
+    [legend]="courseChartLegend">
+    </canvas>
+  </div>
+</div>
+<br>
+</div>
+</div>

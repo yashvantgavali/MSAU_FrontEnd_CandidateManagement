@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<head>
+<script>
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+</head>
+<body>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Candidate <b>Details</b></h2></div>
+                    <div class="col-sm-4">
+                        <div class="search-box">
+                            <i class="material-icons">&#xE8B6;</i>
+                            <input type="text" class="form-control" id="serchbyname" placeholder="Search by Name&hellip;"  [(ngModel)]="nameSearch">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name </th>
+                        <th>Last Name</th>
+                        <th>Email ID</th>
+                        <th>City</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor ="let candidate of candidates |  filterbyname : nameSearch | paginate: { itemsPerPage: 5, currentPage: p }" >
+                        <td>{{candidate.id}}</td>
+                        <td>{{candidate.firstname}}</td>
+                        <td>{{candidate.lastname}}</td>
+                        <td>{{candidate.email}}</td>
+                        <td>{{candidate.city}}</td>
+                        <td>
+                                                   
+             <a class="view" title="View" data-toggle="tooltip"(click)="viewCandidate(candidate.id)"><i class="material-icons">&#xE417;</i></a>
+              <a class="edit" title="Edit" data-toggle="tooltip" (click)="updateCandidate(candidate.id)"><i
+                  class="material-icons">&#xE254;</i></a>
+              <a class="delete" title="Delete" data-toggle="tooltip" (click)="deleteCandidate(candidate.id)"><i
+                  class="material-icons">&#xE872;</i></a>
+                        
+                        </td>
+                    </tr>
+                            
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <ul class="pagination">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </ul>
+            </div>
+        </div>
+    </div>  
+</div>   
+</body>
+
